@@ -14,13 +14,16 @@ export default function StarWarsList() {
                 console.log("This is the response " + characterArray);
                 const characterKeys = Object.values(characterArray)
                 console.log(Object.values(characterKeys))
+                setCharacters(characterKeys)
             })
             .catch(error => console.log(error));
     }, [])
 
     return (
         <div className="character">
-            {characters.map(character => <StarWarsCard />)}
+            {characters.map(character => {
+                return <StarWarsCard character={character} key={character.id} />
+            })}
         </div>
     )
 }
